@@ -1,40 +1,35 @@
 import "./roadmap.css";
 
-import RoadmapTable from "../../components/roadmap/RoadmapTable";
-import FundingProgress from "../../components/roadmap/FundingProgress";
-import PurchaseRecommendation from "../../components/roadmap/PurchaseRecommendation";
-
 import useRoadmap from "../../hooks/useRoadmap";
 
+import RoadmapCard from "../../components/roadmap/RoadmapCard";
+
 export default function Roadmap() {
-  const {
-    roadmap,
-    nextRecommendation,
-    completionPercentage,
-  } = useRoadmap();
+  const { roadmap } = useRoadmap();
 
   return (
     <div className="roadmap-page">
-      <section className="roadmap-header">
-        <div>
-          <h1>Procurement Roadmap</h1>
-          <p>
-            Simulate monthly procurement decisions and funding progress.
-          </p>
-        </div>
-      </section>
+      <div className="roadmap-header">
+        <h1>Roadmap</h1>
 
-      <section className="roadmap-summary">
-        <FundingProgress percentage={completionPercentage} />
+        <p>
+          Rencana pembelian item
+          berdasarkan prioritas dan
+          budget
+        </p>
+      </div>
 
-        <PurchaseRecommendation
-          recommendation={nextRecommendation}
-        />
-      </section>
-
-      <section className="roadmap-table-wrapper">
-        <RoadmapTable roadmap={roadmap} />
-      </section>
+      <div className="roadmap-list">
+        {roadmap.map(
+          (item, index) => (
+            <RoadmapCard
+              key={item.id}
+              index={index + 1}
+              item={item}
+            />
+          )
+        )}
+      </div>
     </div>
   );
 }
