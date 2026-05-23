@@ -1,35 +1,62 @@
-import ItemCard from "./ItemCard";
+import ItemStatusBadge from "./ItemStatusBadge";
 
-export default function ItemList({
-  items,
+export default function ItemCard({
+  item,
   onDelete,
   onTogglePurchased,
 }) {
-  if (items.length === 0) {
-    return (
-      <div className="empty-items">
-        <h3>No Items Added</h3>
-
-        <p>
-          Start adding procurement items
-          to generate roadmap simulation.
-        </p>
-      </div>
-    );
-  }
+  if (!item) return null;
 
   return (
-    <div className="item-list">
-      {items.map((item) => (
-        <ItemCard
-          key={item.id}
-          item={item}
-          onDelete={onDelete}
-          onTogglePurchased={
-            onTogglePurchased
-          }
+    <div className="item-card">
+      <div className="item-card-top">
+        <div>
+          <h3>{item.name}</h3>
+
+          <p>
+            Rp{" "}
+            {item.price.toLocaleString(
+              "id-ID"
+            )}
+          </p>
+        </div>
+
+        <ItemStatusBadge
+          purchased={item.purchased}
         />
-      ))}
+      </div>
+
+      <div className="item-card-middle">
+        <p>
+          Priority:
+          <strong>
+            {" "}
+            {item.priority}
+          </strong>
+        </p>
+      </div>
+
+      <div className="item-card-actions">
+        <button
+          className="toggle-button"
+          onClick={() =>
+            onTogglePurchased(item.id)
+          }
+        >
+          {item.purchased
+            ? "Mark Pending"
+            : "Mark Purchased"}
+        </button>
+
+        <button
+          className="delete-button"
+          onClick={() =>
+            onDelete(item.id)
+          }
+        >
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

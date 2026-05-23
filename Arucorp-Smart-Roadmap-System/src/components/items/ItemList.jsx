@@ -1,58 +1,43 @@
-import ItemStatusBadge from "./ItemStatusBadge";
+import ItemCard from "./ItemCard";
 
-export default function ItemCard({
-  item,
+export default function ItemList({
+  items = [],
   onDelete,
   onTogglePurchased,
 }) {
-  return (
-    <div className="item-card">
-      <div className="item-card-top">
-        <div>
-          <h3>{item.name}</h3>
+  if (!Array.isArray(items)) {
+    return null;
+  }
 
-          <p>
-            Rp{" "}
-            {item.price.toLocaleString(
-              "id-ID"
-            )}
-          </p>
-        </div>
+  if (items.length === 0) {
+    return (
+      <div className="empty-items">
+        <h3>No Items Added</h3>
 
-        <ItemStatusBadge
-          purchased={item.purchased}
-        />
-      </div>
-
-      <div className="item-card-middle">
         <p>
-          Priority:
-          <strong>
-            {" "}
-            {item.priority}
-          </strong>
+          Start adding procurement items
+          to generate roadmap simulation.
         </p>
       </div>
+    );
+  }
 
-      <div className="item-card-actions">
-        <button
-          className="toggle-button"
-          onClick={() =>
-            onTogglePurchased(item.id)
-          }
-        >
-          {item.purchased
-            ? "Mark Pending"
-            : "Mark Purchased"}
-        </button>
+  return (
+    <div className="item-list">
+      {items.map((item) => {
+        if (!item) return null;
 
-        <button
-          className="delete-button"
-          onClick={() => onDelete(item.id)}
-        >
-          Delete
-        </button>
-      </div>
+        return (
+          <ItemCard
+            key={item.id}
+            item={item}
+            onDelete={onDelete}
+            onTogglePurchased={
+              onTogglePurchased
+            }
+          />
+        );
+      })}
     </div>
   );
 }
