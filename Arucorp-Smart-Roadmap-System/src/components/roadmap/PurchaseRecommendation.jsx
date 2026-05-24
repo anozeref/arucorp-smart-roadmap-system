@@ -30,32 +30,13 @@ export default function PurchaseRecommendation({
       </div>
 
       <div className="recommendation-content">
-        <h3>{recommendation.name}</h3>
-
-        <p>
-          Priority:
-          <strong>
-            {" "}
-            {recommendation.priority}
-          </strong>
-        </p>
+        <h3>{recommendation.itemName || recommendation.name}</h3>
 
         <p>
           Price:
           <strong>
             {" "}
-            Rp{" "}
-            {recommendation.price.toLocaleString(
-              "id-ID"
-            )}
-          </strong>
-        </p>
-
-        <p>
-          Recommendation Score:
-          <strong>
-            {" "}
-            {recommendation.score}
+            Rp {recommendation.price.toLocaleString("id-ID")}
           </strong>
         </p>
       </div>

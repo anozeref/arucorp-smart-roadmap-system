@@ -4,10 +4,10 @@ import { RoadmapProvider } from "../context/RoadmapContext";
 
 export default function Providers({ children }) {
   return (
-    <BudgetProvider>
-      <ItemProvider>
+    <ItemProvider>
+      <BudgetProvider>
         <RoadmapProvider>{children}</RoadmapProvider>
-      </ItemProvider>
-    </BudgetProvider>
+      </BudgetProvider>
+    </ItemProvider>
   );
 }

@@ -12,12 +12,12 @@ export function runMonthlySimulation({
 
   const roadmap = [];
 
-  const simulationItems = items.map(
-    (item) => ({
-      ...item,
-      purchased: false,
-    })
-  );
+  // Preserve the purchased flag from source items so already purchased
+  // items are not included in the simulation roadmap.
+  const simulationItems = items.map((item) => ({
+    ...item,
+    purchased: !!item.purchased,
+  }));
 
   while (
     simulationItems.some(

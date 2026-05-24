@@ -18,7 +18,7 @@
       "name": "SSD SATA 128GB",
       "price": 265000,
       "priority": 1,
-      "purchased": false,
+      "purchased": true,
       "createdAt": 1779579722162
     },
     {
@@ -106,7 +106,7 @@
       "name": "Keyboard Furycube IP98",
       "price": 320000,
       "priority": 1,
-      "purchased": false,
+      "purchased": true,
       "createdAt": 1779579943730
     },
     {

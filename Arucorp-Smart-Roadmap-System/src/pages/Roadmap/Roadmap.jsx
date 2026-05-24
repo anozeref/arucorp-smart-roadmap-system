@@ -31,10 +31,10 @@ export default function Roadmap() {
 
           <div className="roadmap-list">
             {roadmap.length > 0 ? (
-              roadmap.map((item, index) => (
+              roadmap.map((item) => (
                 <RoadmapCard
                   key={item.id}
-                  index={index + 1}
+                  index={item.month}
                   item={item}
                 />
               ))

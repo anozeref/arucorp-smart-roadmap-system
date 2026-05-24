@@ -9,6 +9,8 @@ import {
   updateProject,
 } from "../services/api/projectApi";
 
+import useItems from "../hooks/useItems";
+
 export const BudgetContext =
   createContext();
 
@@ -27,6 +29,18 @@ export function BudgetProvider({
   useEffect(() => {
     loadProject();
   }, []);
+
+  // Derive totalSpent from purchased items whenever they change
+  const { purchasedItems } = useItems();
+
+  useEffect(() => {
+    const sum = purchasedItems.reduce(
+      (acc, it) => acc + (Number(it.price) || 0),
+      0
+    );
+
+    setTotalSpent(sum);
+  }, [purchasedItems]);
 
   async function loadProject() {
     try {
