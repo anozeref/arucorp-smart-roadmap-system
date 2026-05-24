@@ -11,8 +11,8 @@ export default function MainLayout() {
           </div>
 
           <div className="sidebar-brand-text">
-            <p>ARUCORP</p>
-            <span>Sistem Roadmap Pintar</span>
+            <p>AruCORP</p>
+            <span>Smart Roadmap System</span>
           </div>
         </div>
 

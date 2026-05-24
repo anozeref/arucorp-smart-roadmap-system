@@ -8,18 +8,14 @@ export default function About() {
         {/* Header */}
         <div className="about-header">
           <h1>Tentang AruCORP</h1>
-          <p className="about-subtitle">Sistem Roadmap Pintar</p>
+          <p className="about-subtitle">Smart Roadmap System</p>
         </div>
 
         {/* Introduction Section */}
         <section className="about-section">
           <div className="about-intro">
             <p>
-              AruCORP: Sistem Roadmap Pintar adalah aplikasi manajemen pengadaan
-              berbasis web yang dirancang untuk mengoptimalkan perencanaan
-              pembelian aset secara taktis dan terukur. Terinspirasi dari kata
-              "Procura" (Pengadaan), aplikasi ini mengubah daftar keinginan yang
-              statis menjadi cetak biru finansial yang dinamis.
+              <b>AruCORP : Smart Roadmap System </b>adalah aplikasi manajemen pengadaan berbasis web yang dirancang untuk mengoptimalkan perencanaan pembelian aset secara taktis dan terukur. Mengambil inspirasi dari istilah "Procura" (Procurement), nama ini juga berakar pada filosofi bahasa Jepang "Aru" (ある / 有る) yang berarti "Ada" atau "Terwujud". Melalui pendekatan tata kelola logistik profesional, aplikasi ini bertindak sebagai jembatan antara ambisi dan realita—mentransformasi daftar keinginan (wishlist) statis menjadi sebuah cetak biru (roadmap) finansial dinamis yang memastikan setiap rencana pengadaan pada akhirnya benar-benar terwujud nyata.
             </p>
           </div>
         </section>
@@ -99,8 +95,8 @@ export default function About() {
 
         {/* Footer/Credits */}
         <footer className="about-footer">
-          <p>Dibuat oleh anozeref.id, untuk anozeref.id</p>
-          <p className="about-footer-disclaimer">Tidak untuk dibagikan</p>
+          <p>© 2026 anozeref.id. Dibuat oleh anozeref.id,  untuk anozeref.id</p>
+          <p className="about-footer-disclaimer">Source code tersedia di GitHub. Namun, proyek ini ditujukan untuk penggunaan pribadi tanpa dukungan teknis sama sekali. Bebas oprek, tanpa layanan.</p>
         </footer>
       </div>
     </div>
