@@ -4,6 +4,7 @@ export default function ItemList({
   items = [],
   onDelete,
   onTogglePurchased,
+  onEdit,
 }) {
   if (!Array.isArray(items)) {
     return null;
@@ -35,6 +36,7 @@ export default function ItemList({
             onTogglePurchased={
               onTogglePurchased
             }
+            onEdit={onEdit}
           />
         );
       })}

@@ -5,8 +5,12 @@ export default function MonthlySimulation({
 }) {
   return (
     <div className="monthly-simulation">
-      <div className="monthly-simulation-header">
-        <h2>Monthly Simulation</h2>
+      <div className="card-header monthly-simulation-header">
+        <div>
+          <h2>Monthly Simulation</h2>
+        </div>
+
+        <i className="fab fa-creative-commons-by card-header-icon" />
       </div>
 
       <div className="timeline-list">

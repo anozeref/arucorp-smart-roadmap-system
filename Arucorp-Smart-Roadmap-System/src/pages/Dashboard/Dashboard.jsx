@@ -5,7 +5,6 @@ import BudgetOverview from "../../components/dashboard/BudgetOverview";
 import SavingsInfo from "../../components/dashboard/SavingsInfo";
 import UpcomingPurchase from "../../components/dashboard/UpcomingPurchase";
 
-import MonthlySimulation from "../../components/roadmap/MonthlySimulation";
 import PurchaseRecommendation from "../../components/roadmap/PurchaseRecommendation";
 
 import useBudget from "../../hooks/useBudget";
@@ -13,7 +12,7 @@ import useItems from "../../hooks/useItems";
 import useRoadmap from "../../hooks/useRoadmap";
 
 export default function Dashboard() {
-  const { monthlyAllocation, currentBalance, totalSpent } = useBudget();
+  const { monthlyAllocation, totalSpent } = useBudget();
 
   const { items, purchasedItems, pendingItems } = useItems();
 
@@ -22,12 +21,17 @@ export default function Dashboard() {
   return (
     <div className="dashboard-page">
       <section className="dashboard-header">
-        <div>
-          <h1>Procurement Dashboard</h1>
-          <p>
-            Monitor procurement progress, balance allocation, and roadmap
-            simulation.
-          </p>
+        <div className="page-header-inner">
+          <div className="page-header-icon">
+            <i className="fab fa-creative-commons"></i>
+          </div>
+          <div>
+            <h1>Procurement Dashboard</h1>
+            <p>
+              Monitor procurement progress and balance allocation with a
+              compact dashboard view.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -35,11 +39,6 @@ export default function Dashboard() {
         <SummaryCard
           title="Monthly Allocation"
           value={`Rp ${monthlyAllocation.toLocaleString("id-ID")}`}
-        />
-
-        <SummaryCard
-          title="Current Balance"
-          value={`Rp ${currentBalance.toLocaleString("id-ID")}`}
         />
 
         <SummaryCard
@@ -55,26 +54,22 @@ export default function Dashboard() {
 
       <section className="dashboard-main-grid">
         <div className="dashboard-left">
+          <PurchaseRecommendation
+            recommendation={nextRecommendation}
+          />
+
           <BudgetOverview
             allocation={monthlyAllocation}
-            balance={currentBalance}
             spent={totalSpent}
           />
 
           <SavingsInfo
-            balance={currentBalance}
             pendingItems={pendingItems.length}
-          />
-
-          <PurchaseRecommendation
-            recommendation={nextRecommendation}
           />
         </div>
 
         <div className="dashboard-right">
           <UpcomingPurchase roadmap={roadmap} />
-
-          <MonthlySimulation roadmap={roadmap} />
         </div>
       </section>
     </div>

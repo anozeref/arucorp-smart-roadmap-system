@@ -1,48 +1,38 @@
 export default function BudgetOverview({
   allocation,
-  balance,
   spent,
 }) {
   return (
     <div className="budget-overview-card">
       <div className="card-header">
-        <h2>Budget Overview</h2>
+        <div>
+          <h2>Budget Overview</h2>
+        </div>
+
+        <i className="fab fa-cc-amazon-pay card-header-icon" />
       </div>
 
-      <div className="budget-info-list">
-        <div className="budget-info-item">
-          <span>
-            Monthly Allocation
-          </span>
+      <div className="recommendation-content">
+        <div className="budget-info-list">
+          <div className="budget-info-item">
+            <span>Monthly Allocation</span>
 
-          <strong>
-            Rp{" "}
-            {allocation.toLocaleString(
-              "id-ID"
-            )}
-          </strong>
-        </div>
+            <strong>
+              Rp{" "}
+              {allocation.toLocaleString(
+                "id-ID"
+              )}
+            </strong>
+          </div>
 
-        <div className="budget-info-item">
-          <span>
-            Current Balance
-          </span>
+          <div className="budget-info-item">
+            <span>Total Spent</span>
 
-          <strong>
-            Rp{" "}
-            {balance.toLocaleString(
-              "id-ID"
-            )}
-          </strong>
-        </div>
-
-        <div className="budget-info-item">
-          <span>Total Spent</span>
-
-          <strong>
-            Rp{" "}
-            {spent.toLocaleString("id-ID")}
-          </strong>
+            <strong>
+              Rp{" "}
+              {spent.toLocaleString("id-ID")}
+            </strong>
+          </div>
         </div>
       </div>
     </div>

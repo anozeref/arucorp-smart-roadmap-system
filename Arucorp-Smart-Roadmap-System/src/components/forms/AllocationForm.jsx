@@ -30,7 +30,7 @@ export default function AllocationForm({
         />
       </div>
 
-      <button type="submit">
+      <button type="submit" className="button button-primary">
         Save Allocation
       </button>
     </form>

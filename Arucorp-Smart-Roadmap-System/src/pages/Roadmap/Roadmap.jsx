@@ -10,25 +10,42 @@ export default function Roadmap() {
   return (
     <div className="roadmap-page">
       <div className="roadmap-header">
-        <h1>Roadmap</h1>
+        <div className="page-header-inner">
+          <div className="page-header-icon">
+            <i className="fab fa-creative-commons-by"></i>
+          </div>
+          <div>
+            <h1>Roadmap</h1>
 
-        <p>
-          Rencana pembelian item
-          berdasarkan prioritas dan
-          budget
-        </p>
+            <p>
+              Prioritize item purchases according to
+              budget and needs.
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div className="roadmap-list">
-        {roadmap.map(
-          (item, index) => (
-            <RoadmapCard
-              key={item.id}
-              index={index + 1}
-              item={item}
-            />
-          )
-        )}
+      <div className="roadmap-summary">
+        <section className="roadmap-main">
+          {/* Section header removed per localization request */}
+
+          <div className="roadmap-list">
+            {roadmap.length > 0 ? (
+              roadmap.map((item, index) => (
+                <RoadmapCard
+                  key={item.id}
+                  index={index + 1}
+                  item={item}
+                />
+              ))
+              ) : (
+              <div className="roadmap-empty">
+                No roadmap items yet. Add entries in db.json
+                or via the item form.
+              </div>
+            )}
+          </div>
+        </section>
       </div>
     </div>
   );

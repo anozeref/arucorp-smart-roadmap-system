@@ -8,7 +8,7 @@ import {
   createItem,
   deleteItem as deleteItemApi,
   getItems,
-  updateItem,
+  updateItem as updateItemApi,
 } from "../services/api/itemApi";
 
 export const ItemContext =
@@ -77,7 +77,7 @@ export function ItemProvider({
           !targetItem.purchased,
       };
 
-      await updateItem(
+      await updateItemApi(
         id,
         updatedItem
       );
@@ -86,6 +86,28 @@ export function ItemProvider({
         prev.map((item) =>
           item.id === id
             ? updatedItem
+            : item
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async function updateItem(
+    id,
+    updatedItem
+  ) {
+    try {
+      const savedItem = await updateItemApi(
+        id,
+        updatedItem
+      );
+
+      setItems((prev) =>
+        prev.map((item) =>
+          item.id === id
+            ? savedItem
             : item
         )
       );
@@ -112,6 +134,7 @@ export function ItemProvider({
         addItem,
         deleteItem,
         togglePurchased,
+        updateItem,
       }}
     >
       {children}

@@ -1,10 +1,123 @@
 {
   "project": {
-    "monthlyAllocation": 0,
+    "monthlyAllocation": 300000,
     "currentBalance": 0,
     "totalSpent": 0
   },
-  "items": [],
+  "items": [
+    {
+      "id": "oqBB0S1tjqo",
+      "name": "Anti-static wrist strap",
+      "price": 25000,
+      "priority": 2,
+      "purchased": false,
+      "createdAt": 1779579700514
+    },
+    {
+      "id": "33xRDnMgyFY",
+      "name": "SSD SATA 128GB",
+      "price": 265000,
+      "priority": 1,
+      "purchased": false,
+      "createdAt": 1779579722162
+    },
+    {
+      "id": "4s8T9CH6l-k",
+      "name": "PSU Segotep AN400W 80+",
+      "price": 365000,
+      "priority": 1,
+      "purchased": false,
+      "createdAt": 1779579739427
+    },
+    {
+      "id": "0_dg3q-Q_8U",
+      "name": "Thermal paste Noctua NT-H1",
+      "price": 45000,
+      "priority": 2,
+      "purchased": false,
+      "createdAt": 1779579757835
+    },
+    {
+      "id": "3Yl_OzJbQYw",
+      "name": "Magnetic dust filter 120mm set (3pcs)",
+      "price": 35000,
+      "priority": 2,
+      "purchased": false,
+      "createdAt": 1779579782310
+    },
+    {
+      "id": "6jGwjhiiKcU",
+      "name": "PWM fan splitter 1-to-4",
+      "price": 25000,
+      "priority": 3,
+      "purchased": false,
+      "createdAt": 1779579815648
+    },
+    {
+      "id": "ERC1RwulOHs",
+      "name": "R9 370 4GB GDDR5",
+      "price": 850000,
+      "priority": 1,
+      "purchased": false,
+      "createdAt": 1779579825879
+    },
+    {
+      "id": "Ea6Kn2K3DAM",
+      "name": "Mobo Varro H81+",
+      "price": 350000,
+      "priority": 1,
+      "purchased": false,
+      "createdAt": 1779579845612
+    },
+    {
+      "id": "B5q_6ZNov28",
+      "name": "Intel Core i5-4590",
+      "price": 250000,
+      "priority": 3,
+      "purchased": false,
+      "createdAt": 1779579859256
+    },
+    {
+      "id": "dFjOgiC76Wo",
+      "name": "RAM 2×8GB DDR3 1600MHz",
+      "price": 240000,
+      "priority": 2,
+      "purchased": false,
+      "createdAt": 1779579894964
+    },
+    {
+      "id": "W-DOX9qkUys",
+      "name": "NVMe SSD 256GB",
+      "price": 525000,
+      "priority": 1,
+      "purchased": false,
+      "createdAt": 1779579909701
+    },
+    {
+      "id": "hMABaLyORf8",
+      "name": "Isopropyl alcohol 99%",
+      "price": 99000,
+      "priority": 2,
+      "purchased": false,
+      "createdAt": 1779579925201
+    },
+    {
+      "id": "AWBHz05R8Cc",
+      "name": "Keyboard Furycube IP98",
+      "price": 320000,
+      "priority": 1,
+      "purchased": false,
+      "createdAt": 1779579943730
+    },
+    {
+      "id": "jMKJJp3ctmo",
+      "name": "GTX 1650 Super 4GB GDDR6",
+      "price": 1600000,
+      "priority": 1,
+      "purchased": false,
+      "createdAt": 1779579959798
+    }
+  ],
   "roadmap": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

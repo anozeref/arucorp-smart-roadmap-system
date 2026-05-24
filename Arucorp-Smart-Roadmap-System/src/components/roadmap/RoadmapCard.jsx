@@ -4,19 +4,34 @@ export default function RoadmapCard({
   index,
   item,
 }) {
+  const remainingBalance = item.remainingBalance || 0;
+  const itemPrice = item.price || 0;
   const availableBudget =
-    item.availableBudget ||
-    item.price +
-      item.remainingBalance;
+    item.availableBudget ??
+    itemPrice +
+      remainingBalance;
 
   const usedPercentage = Math.min(
     Math.floor(
-      (item.price /
-        availableBudget) *
+      (itemPrice / availableBudget) *
         100
     ),
     100
   );
+
+  const description =
+    item.description ||
+    item.category ||
+    "Roadmap procurement item";
+
+  const progressColor =
+    usedPercentage <= 33
+      ? "hsl(142, 45%, 70%)"
+      : usedPercentage <= 66
+      ? "var(--color-primary-soft)"
+      : usedPercentage <= 90
+      ? "hsl(30, 90%, 70%)"
+      : "hsl(4, 85%, 72%)";
 
   return (
     <div className="roadmap-card">
@@ -34,40 +49,31 @@ export default function RoadmapCard({
         </h2>
 
         <p className="roadmap-description">
-          Procurement roadmap target
+          {description}
         </p>
 
         <div className="roadmap-stats">
           <div className="roadmap-stat">
-            <span>TERSEDIA</span>
+            <span>AVAILABLE</span>
 
             <strong>
-              Rp
-              {availableBudget.toLocaleString(
-                "id-ID"
-              )}
+              Rp{availableBudget.toLocaleString("id-ID")}
             </strong>
           </div>
 
           <div className="roadmap-stat">
-            <span>HARGA</span>
+            <span>EST. PRICE</span>
 
             <strong>
-              Rp
-              {item.price.toLocaleString(
-                "id-ID"
-              )}
+              Rp{itemPrice.toLocaleString("id-ID")}
             </strong>
           </div>
 
           <div className="roadmap-stat">
-            <span>SISA TABUNGAN</span>
+            <span>REMAINING SAVINGS</span>
 
             <strong>
-              Rp
-              {item.remainingBalance.toLocaleString(
-                "id-ID"
-              )}
+              Rp{remainingBalance.toLocaleString("id-ID")}
             </strong>
           </div>
         </div>
@@ -77,17 +83,16 @@ export default function RoadmapCard({
             className="roadmap-progress-fill"
             style={{
               width: `${usedPercentage}%`,
+              background: progressColor,
+              boxShadow: `0 0 12px ${progressColor}`,
             }}
           />
         </div>
 
         <p className="roadmap-footer">
-          {usedPercentage}% dari budget
-          digunakan — Rp
-          {item.remainingBalance.toLocaleString(
+          {usedPercentage}% of budget used — Rp{remainingBalance.toLocaleString(
             "id-ID"
-          )}{" "}
-          lanjut ditabung
+          )} remaining to save
         </p>
       </div>
     </div>

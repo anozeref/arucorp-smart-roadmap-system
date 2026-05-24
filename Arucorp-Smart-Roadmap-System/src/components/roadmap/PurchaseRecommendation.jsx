@@ -4,11 +4,16 @@ export default function PurchaseRecommendation({
   if (!recommendation) {
     return (
       <div className="purchase-recommendation">
-        <h2>No Recommendation</h2>
+        <div className="card-header">
+          <div>
+            <h2>No Recommendation</h2>
+          </div>
+
+          <i className="fab fa-creative-commons card-header-icon" />
+        </div>
 
         <p>
-          All procurement items have
-          been completed.
+          All procurement items have been completed.
         </p>
       </div>
     );
@@ -16,7 +21,13 @@ export default function PurchaseRecommendation({
 
   return (
     <div className="purchase-recommendation">
-      <h2>Next Recommendation</h2>
+      <div className="card-header">
+        <div>
+          <h2>Next Recommendation</h2>
+        </div>
+
+        <i className="fab fa-cc-amazon-pay card-header-icon" />
+      </div>
 
       <div className="recommendation-content">
         <h3>{recommendation.name}</h3>

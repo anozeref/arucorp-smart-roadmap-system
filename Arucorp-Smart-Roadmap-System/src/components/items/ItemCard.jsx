@@ -4,6 +4,7 @@ export default function ItemCard({
   item,
   onDelete,
   onTogglePurchased,
+  onEdit,
 }) {
   if (!item) return null;
 
@@ -37,6 +38,13 @@ export default function ItemCard({
       </div>
 
       <div className="item-card-actions">
+        <button
+          className="edit-button"
+          onClick={() => onEdit?.(item)}
+        >
+          Edit
+        </button>
+
         <button
           className="toggle-button"
           onClick={() =>

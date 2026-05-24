@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import PriorityInput from "./PriorityInput";
 
 export default function ItemForm({
   onAddItem,
+  onUpdateItem,
+  initialItem,
+  onCancelEdit,
 }) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
@@ -15,22 +18,44 @@ export default function ItemForm({
     setPriority(1);
   }
 
+  useEffect(() => {
+    if (initialItem) {
+      setName(initialItem.name || "");
+      setPrice(
+        initialItem.price?.toString() || ""
+      );
+      setPriority(initialItem.priority ?? 1);
+      return;
+    }
+
+    resetForm();
+  }, [initialItem]);
+
   function handleSubmit(e) {
     e.preventDefault();
 
     if (!name.trim()) return;
     if (!price || Number(price) <= 0) return;
 
-    const newItem = {
-      id: crypto.randomUUID(),
+    const itemPayload = {
+      id:
+        initialItem?.id ||
+        crypto.randomUUID(),
       name: name.trim(),
       price: Number(price),
       priority,
-      purchased: false,
-      createdAt: Date.now(),
+      purchased:
+        initialItem?.purchased ?? false,
+      createdAt:
+        initialItem?.createdAt ||
+        Date.now(),
     };
 
-    onAddItem(newItem);
+    if (initialItem) {
+      onUpdateItem?.(itemPayload);
+    } else {
+      onAddItem(itemPayload);
+    }
 
     resetForm();
   }
@@ -67,9 +92,21 @@ export default function ItemForm({
         onChange={setPriority}
       />
 
-      <button type="submit">
-        Add Item
-      </button>
+      <div className="item-form-actions">
+        <button type="submit" className="button button-primary">
+          {initialItem ? "Update Item" : "Add Item"}
+        </button>
+
+        {initialItem && (
+          <button
+            type="button"
+            className="button button-secondary"
+            onClick={onCancelEdit}
+          >
+            Cancel
+          </button>
+        )}
+      </div>
     </form>
   );
 }

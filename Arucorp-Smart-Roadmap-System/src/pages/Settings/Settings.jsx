@@ -14,11 +14,16 @@ export default function Settings() {
   return (
     <div className="settings-page">
       <section className="settings-header">
-        <div>
-          <h1>Settings</h1>
-          <p>
-            Configure procurement allocation and application preferences.
-          </p>
+        <div className="page-header-inner">
+          <div className="page-header-icon">
+            <i className="fab fa-opencart"></i>
+          </div>
+          <div>
+            <h1>Settings</h1>
+            <p>
+              Configure procurement allocation and application preferences.
+            </p>
+          </div>
         </div>
       </section>
 
