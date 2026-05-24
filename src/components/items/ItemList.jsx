@@ -5,6 +5,7 @@ export default function ItemList({
   onDelete,
   onTogglePurchased,
   onEdit,
+  onUpdateItem,
 }) {
   if (!Array.isArray(items)) {
     return null;
@@ -32,11 +33,13 @@ export default function ItemList({
           <ItemCard
             key={item.id}
             item={item}
+            allItems={items}
             onDelete={onDelete}
             onTogglePurchased={
               onTogglePurchased
             }
             onEdit={onEdit}
+            onUpdateItem={onUpdateItem}
           />
         );
       })}

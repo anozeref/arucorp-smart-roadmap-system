@@ -8,6 +8,28 @@ import RoadmapCard from "../../components/roadmap/RoadmapCard";
 export default function Roadmap() {
   const { roadmap } = useRoadmap();
 
+  const groupedByMonth = roadmap.reduce(
+    (acc, entry) => {
+      const monthKey = String(entry.month);
+
+      if (!acc[monthKey]) {
+        acc[monthKey] = [];
+      }
+
+      acc[monthKey].push(entry);
+
+      return acc;
+    },
+    {}
+  );
+
+  const months = Object.keys(groupedByMonth)
+    .sort((a, b) => Number(a) - Number(b))
+    .map((monthKey) => ({
+      month: Number(monthKey),
+      purchases: groupedByMonth[monthKey],
+    }));
+
   return (
     <div className="roadmap-page">
       <div className="roadmap-header">
@@ -31,14 +53,25 @@ export default function Roadmap() {
 
           <div className="roadmap-list">
             {roadmap.length > 0 ? (
-              roadmap.map((item) => (
-                <RoadmapCard
-                  key={item.id}
-                  index={item.month}
-                  item={item}
-                />
+              months.map((monthGroup) => (
+                <div
+                  key={monthGroup.month}
+                  className="roadmap-month-group"
+                >
+                  <div className="roadmap-month-heading">
+                    Bulan {monthGroup.month}
+                  </div>
+
+                  {monthGroup.purchases.map((item, idx) => (
+                    <RoadmapCard
+                      key={item.id}
+                      index={idx + 1}
+                      item={item}
+                    />
+                  ))}
+                </div>
               ))
-              ) : (
+            ) : (
               <div className="roadmap-empty">
                 Belum ada item roadmap. Tambahkan entri di db.json
                 atau lewat formulir item.

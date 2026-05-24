@@ -1,27 +1,43 @@
+import {
+  getUnlockImpact,
+  getItemDependencies,
+} from "../utils/dependencyUtils";
+
 export function calculateItemScore(
   item,
-  currentBalance
+  currentBalance,
+  items
 ) {
   const priorityWeight =
-    (6 - item.priority) * 100;
+    (6 - item.priority) * 160;
 
   const affordabilityWeight =
     currentBalance >= item.price
-      ? 200
+      ? 240
       : Math.floor(
           (currentBalance / item.price) *
-            100
+            120
         );
 
-  const priceEfficiencyWeight =
+  const efficiencyWeight =
     Math.floor(
-      1000000 / item.price
+      1800000 / item.price
     );
+
+  const unlockImpactWeight =
+    getUnlockImpact(item, items) * 90;
+
+  const roadmapOptimizationWeight =
+    getItemDependencies(item).length > 0
+      ? 40
+      : 0;
 
   const score =
     priorityWeight +
     affordabilityWeight +
-    priceEfficiencyWeight;
+    efficiencyWeight +
+    unlockImpactWeight +
+    roadmapOptimizationWeight;
 
   return score;
 }

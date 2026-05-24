@@ -29,16 +29,25 @@ export function runMonthlySimulation({
       monthlyAllocation,
     });
 
-    const recommendation =
-      decideNextPurchase({
-        items: simulationItems,
-        balance,
-      });
+    let purchasedThisMonth = false;
+    let noFurtherPurchases = false;
 
-    if (
-      recommendation &&
-      balance >= recommendation.price
-    ) {
+    while (true) {
+      const recommendation =
+        decideNextPurchase({
+          items: simulationItems,
+          balance,
+        });
+
+      if (!recommendation) {
+        noFurtherPurchases = true;
+        break;
+      }
+
+      if (balance < recommendation.price) {
+        break;
+      }
+
       balance =
         calculateRemainingBalance({
           balance,
@@ -68,6 +77,12 @@ export function runMonthlySimulation({
           recommendation.price,
         remainingBalance: balance,
       });
+
+      purchasedThisMonth = true;
+    }
+
+    if (noFurtherPurchases) {
+      break;
     }
 
     currentMonth++;

@@ -46,6 +46,8 @@ export default function ItemForm({
       priority,
       purchased:
         initialItem?.purchased ?? false,
+      dependencies:
+        initialItem?.dependencies ?? [],
       createdAt:
         initialItem?.createdAt ||
         Date.now(),

@@ -459,6 +459,74 @@ textarea {
   gap: 12px;
 }
 
+.dependency-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dependency-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dependency-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dependency-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dependency-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dependency-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dependency-card.selected {
+  border-color: rgba(212, 160, 23, 0.45);
+  background: rgba(212, 160, 23, 0.12);
+}
+
+.dependency-card input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary-soft);
+}
+
+.dependency-card span {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
 .toggle-button,
 .delete-button,
 .edit-button {

@@ -1,9 +1,12 @@
 export default function TimelineCard({
   month,
-  itemName,
-  price,
-  remainingBalance,
+  purchases = [],
 }) {
+  const endOfMonthBalance =
+    purchases.length > 0
+      ? purchases[purchases.length - 1].remainingBalance
+      : 0;
+
   return (
     <div className="timeline-card">
       <div className="timeline-card-header">
@@ -11,28 +14,29 @@ export default function TimelineCard({
       </div>
 
       <div className="timeline-card-body">
-        <p>
-          Purchased:
-          <strong> {itemName}</strong>
-        </p>
+        {purchases.map((purchase) => (
+          <div
+            className="timeline-purchase"
+            key={purchase.id}
+          >
+            <p>
+              Purchased:
+              <strong> {purchase.itemName}</strong>
+            </p>
 
-        <p>
-          Price:
-          <strong>
-            {" "}
-            Rp{" "}
-            {price.toLocaleString("id-ID")}
-          </strong>
-        </p>
+            <p>
+              Price:
+              <strong>
+                Rp {purchase.price.toLocaleString("id-ID")}
+              </strong>
+            </p>
+          </div>
+        ))}
 
-        <p>
+        <p className="timeline-balance">
           Remaining Balance:
           <strong>
-            {" "}
-            Rp{" "}
-            {remainingBalance.toLocaleString(
-              "id-ID"
-            )}
+            Rp {endOfMonthBalance.toLocaleString("id-ID")}
           </strong>
         </p>
       </div>

@@ -5,6 +5,28 @@ import { CalendarDays } from "lucide-react";
 export default function MonthlySimulation({
   roadmap,
 }) {
+  const groupedByMonth = roadmap.reduce(
+    (acc, entry) => {
+      const monthKey = String(entry.month);
+
+      if (!acc[monthKey]) {
+        acc[monthKey] = [];
+      }
+
+      acc[monthKey].push(entry);
+
+      return acc;
+    },
+    {}
+  );
+
+  const months = Object.keys(groupedByMonth)
+    .sort((a, b) => Number(a) - Number(b))
+    .map((monthKey) => ({
+      month: Number(monthKey),
+      purchases: groupedByMonth[monthKey],
+    }));
+
   return (
     <div className="monthly-simulation">
       <div className="card-header monthly-simulation-header">
@@ -16,15 +38,11 @@ export default function MonthlySimulation({
       </div>
 
       <div className="timeline-list">
-        {roadmap.map((entry) => (
+        {months.map((entry) => (
           <TimelineCard
-            key={entry.id}
+            key={entry.month}
             month={entry.month}
-            itemName={entry.itemName}
-            price={entry.price}
-            remainingBalance={
-              entry.remainingBalance
-            }
+            purchases={entry.purchases}
           />
         ))}
       </div>

@@ -125,6 +125,7 @@ export default function Items() {
             onDelete={deleteItem}
             onTogglePurchased={togglePurchased}
             onEdit={handleEdit}
+            onUpdateItem={updateItem}
           />
         </div>
       </section>

@@ -10,6 +10,10 @@ import {
   getItems,
   updateItem as updateItemApi,
 } from "../services/api/itemApi";
+import {
+  validateDependencies,
+  isItemLocked,
+} from "../utils/dependencyUtils";
 
 export const ItemContext =
   createContext();
@@ -49,6 +53,18 @@ export function ItemProvider({
 
   async function deleteItem(id) {
     try {
+      const dependentItems = items.filter(
+        (item) =>
+          item.dependencies?.includes(id)
+      );
+
+      if (dependentItems.length > 0) {
+        console.error(
+          "Cannot delete item because other items depend on it."
+        );
+        return;
+      }
+
       await deleteItemApi(id);
 
       setItems((prev) =>
@@ -70,6 +86,16 @@ export function ItemProvider({
       );
 
       if (!targetItem) return;
+
+      if (
+        !targetItem.purchased &&
+        isItemLocked(targetItem, items)
+      ) {
+        console.error(
+          "Cannot mark item as purchased while dependencies are not met."
+        );
+        return;
+      }
 
       const updatedItem = {
         ...targetItem,
@@ -99,9 +125,27 @@ export function ItemProvider({
     updatedItem
   ) {
     try {
+      const existingItem = items.find(
+        (item) => item.id === id
+      );
+
+      if (!existingItem) return;
+
+      const mergedItem = {
+        ...existingItem,
+        ...updatedItem,
+      };
+
+      if (!validateDependencies(mergedItem, items)) {
+        console.error(
+          "Invalid dependency flow detected. Update aborted."
+        );
+        return;
+      }
+
       const savedItem = await updateItemApi(
         id,
-        updatedItem
+        mergedItem
       );
 
       setItems((prev) =>
