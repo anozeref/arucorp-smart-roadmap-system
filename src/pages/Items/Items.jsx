@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./items.css";
 
+import { Package } from "lucide-react";
 import ItemForm from "../../components/forms/ItemForm";
 import ItemList from "../../components/items/ItemList";
 
@@ -80,12 +81,12 @@ export default function Items() {
       <section className="items-header">
         <div className="page-header-inner">
           <div className="page-header-icon">
-            <i className="fab fa-dropbox"></i>
+            <Package size={24} />
           </div>
           <div>
-            <h1>Procurement Items</h1>
+            <h1>Item Pengadaan</h1>
             <p>
-              Manage procurement targets, priorities, and item pricing.
+              Kelola target pengadaan, prioritas, dan harga item dengan jelas.
             </p>
           </div>
         </div>

@@ -13,11 +13,11 @@ export default function ItemList({
   if (items.length === 0) {
     return (
       <div className="empty-items">
-        <h3>No Items Added</h3>
+        <h3>Belum Ada Item</h3>
 
         <p>
-          Start adding procurement items
-          to generate roadmap simulation.
+          Mulai tambahkan item pengadaan
+          untuk menghasilkan simulasi roadmap.
         </p>
       </div>
     );

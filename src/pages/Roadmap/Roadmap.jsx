@@ -1,5 +1,6 @@
 import "./roadmap.css";
 
+import { MapPin } from "lucide-react";
 import useRoadmap from "../../hooks/useRoadmap";
 
 import RoadmapCard from "../../components/roadmap/RoadmapCard";
@@ -12,14 +13,13 @@ export default function Roadmap() {
       <div className="roadmap-header">
         <div className="page-header-inner">
           <div className="page-header-icon">
-            <i className="fab fa-creative-commons-by"></i>
+            <MapPin size={24} />
           </div>
           <div>
             <h1>Roadmap</h1>
 
             <p>
-              Prioritize item purchases according to
-              budget and needs.
+              Prioritaskan pembelian item berdasarkan anggaran dan kebutuhan.
             </p>
           </div>
         </div>
@@ -40,8 +40,8 @@ export default function Roadmap() {
               ))
               ) : (
               <div className="roadmap-empty">
-                No roadmap items yet. Add entries in db.json
-                or via the item form.
+                Belum ada item roadmap. Tambahkan entri di db.json
+                atau lewat formulir item.
               </div>
             )}
           </div>

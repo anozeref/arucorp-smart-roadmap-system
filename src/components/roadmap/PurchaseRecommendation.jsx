@@ -1,3 +1,5 @@
+import { CheckCircle2, ShoppingCart } from "lucide-react";
+
 export default function PurchaseRecommendation({
   recommendation,
 }) {
@@ -6,14 +8,14 @@ export default function PurchaseRecommendation({
       <div className="purchase-recommendation">
         <div className="card-header">
           <div>
-            <h2>No Recommendation</h2>
+            <h2>Tidak Ada Rekomendasi</h2>
           </div>
 
-          <i className="fab fa-creative-commons card-header-icon" />
+          <CheckCircle2 className="card-header-icon" />
         </div>
 
         <p>
-          All procurement items have been completed.
+          Semua item pengadaan telah selesai.
         </p>
       </div>
     );
@@ -26,7 +28,7 @@ export default function PurchaseRecommendation({
           <h2>Next Recommendation</h2>
         </div>
 
-        <i className="fab fa-cc-amazon-pay card-header-icon" />
+        <ShoppingCart className="card-header-icon" />
       </div>
 
       <div className="recommendation-content">

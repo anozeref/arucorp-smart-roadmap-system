@@ -20,18 +20,18 @@ export default function AllocationForm({
       onSubmit={handleSubmit}
     >
       <div className="form-group">
-        <label>Monthly Allocation</label>
+        <label>Alokasi Bulanan</label>
 
         <input
           type="number"
-          placeholder="Enter monthly allocation"
+          placeholder="Masukkan alokasi bulanan"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
       </div>
 
       <button type="submit" className="button button-primary">
-        Save Allocation
+        Simpan Alokasi
       </button>
     </form>
   );

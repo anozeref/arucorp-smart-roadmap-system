@@ -1,3 +1,5 @@
+import { BarChart3 } from "lucide-react";
+
 export default function BudgetOverview({
   allocation,
   spent,
@@ -6,16 +8,16 @@ export default function BudgetOverview({
     <div className="budget-overview-card">
       <div className="card-header">
         <div>
-          <h2>Budget Overview</h2>
+          <h2>Gambaran Anggaran</h2>
         </div>
 
-        <i className="fab fa-cc-amazon-pay card-header-icon" />
+        <BarChart3 className="card-header-icon" />
       </div>
 
       <div className="recommendation-content">
         <div className="budget-info-list">
           <div className="budget-info-item">
-            <span>Monthly Allocation</span>
+            <span>Alokasi Bulanan</span>
 
             <strong>
               Rp{" "}
@@ -26,7 +28,7 @@ export default function BudgetOverview({
           </div>
 
           <div className="budget-info-item">
-            <span>Total Spent</span>
+            <span>Total Pengeluaran</span>
 
             <strong>
               Rp{" "}

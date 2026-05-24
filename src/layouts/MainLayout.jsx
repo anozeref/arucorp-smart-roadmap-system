@@ -1,4 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
+import { Box, Home, Package, MapPin, Settings, Info } from "lucide-react";
 
 export default function MainLayout() {
   return (
@@ -6,39 +7,45 @@ export default function MainLayout() {
       <aside className="sidebar">
         <div className="sidebar-brand">
           <div className="sidebar-logo">
-            <i className="fab fa-amazon"></i>
+            <Box size={20} />
           </div>
 
           <div className="sidebar-brand-text">
             <p>ARUCORP</p>
-            <span>Smart Roadmap System</span>
+            <span>Sistem Roadmap Pintar</span>
           </div>
         </div>
 
         <nav>
           <NavLink to="/" className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
             <span className="sidebar-icon">
-              <i className="fab fa-creative-commons"></i>
+              <Home size={18} />
             </span>
-            Dashboard
+            Beranda
           </NavLink>
           <NavLink to="/items" className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
             <span className="sidebar-icon">
-              <i className="fab fa-dropbox"></i>
+              <Package size={18} />
             </span>
-            Items
+            Daftar Item
           </NavLink>
           <NavLink to="/roadmap" className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
             <span className="sidebar-icon">
-              <i className="fab fa-creative-commons-by"></i>
+              <MapPin size={18} />
             </span>
             Roadmap
           </NavLink>
           <NavLink to="/settings" className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
             <span className="sidebar-icon">
-              <i className="fab fa-opencart"></i>
+              <Settings size={18} />
             </span>
-            Settings
+            Pengaturan
+          </NavLink>
+          <NavLink to="/about" className={({ isActive }) => isActive ? "sidebar-link active" : "sidebar-link"}>
+            <span className="sidebar-icon">
+              <Info size={18} />
+            </span>
+            Tentang
           </NavLink>
         </nav>
       </aside>

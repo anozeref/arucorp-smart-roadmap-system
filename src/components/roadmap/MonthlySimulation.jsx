@@ -1,5 +1,7 @@
 import TimelineCard from "./TimelineCard";
 
+import { CalendarDays } from "lucide-react";
+
 export default function MonthlySimulation({
   roadmap,
 }) {
@@ -10,7 +12,7 @@ export default function MonthlySimulation({
           <h2>Monthly Simulation</h2>
         </div>
 
-        <i className="fab fa-creative-commons-by card-header-icon" />
+        <CalendarDays className="card-header-icon" />
       </div>
 
       <div className="timeline-list">

@@ -1,3 +1,5 @@
+import { Clock } from "lucide-react";
+
 export default function UpcomingPurchase({
   roadmap,
 }) {
@@ -7,17 +9,17 @@ export default function UpcomingPurchase({
     <div className="upcoming-purchase-card">
       <div className="card-header">
         <div>
-          <h2>Upcoming Purchases</h2>
+          <h2>Pembelian Mendatang</h2>
         </div>
 
-        <i className="fab fa-dropbox card-header-icon" />
+        <Clock className="card-header-icon" />
       </div>
 
       <div className="recommendation-content">
         <div className="upcoming-list">
           {upcomingItems.length === 0 && (
             <p>
-              No upcoming procurement roadmap available.
+              Belum ada roadmap pengadaan mendatang.
             </p>
           )}
 

@@ -29,7 +29,7 @@ export default function ItemCard({
 
       <div className="item-card-middle">
         <p>
-          Priority:
+          Prioritas:
           <strong>
             {" "}
             {item.priority}
@@ -42,7 +42,7 @@ export default function ItemCard({
           className="edit-button"
           onClick={() => onEdit?.(item)}
         >
-          Edit
+          Ubah
         </button>
 
         <button
@@ -52,8 +52,8 @@ export default function ItemCard({
           }
         >
           {item.purchased
-            ? "Mark Pending"
-            : "Mark Purchased"}
+            ? "Tandai Belum"
+            : "Tandai Terbeli"}
         </button>
 
         <button
@@ -62,7 +62,7 @@ export default function ItemCard({
             onDelete(item.id)
           }
         >
-          Delete
+          Hapus
         </button>
       </div>
     </div>

@@ -66,22 +66,22 @@ export default function ItemForm({
       onSubmit={handleSubmit}
     >
       <div className="form-group">
-        <label>Item Name</label>
+        <label>Nama Item</label>
 
         <input
           type="text"
-          placeholder="Enter item name"
+          placeholder="Masukkan nama item"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
       </div>
 
       <div className="form-group">
-        <label>Item Price</label>
+        <label>Harga Item</label>
 
         <input
           type="number"
-          placeholder="Enter item price"
+          placeholder="Masukkan harga item"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
@@ -94,7 +94,7 @@ export default function ItemForm({
 
       <div className="item-form-actions">
         <button type="submit" className="button button-primary">
-          {initialItem ? "Update Item" : "Add Item"}
+          {initialItem ? "Perbarui Item" : "Tambah Item"}
         </button>
 
         {initialItem && (
@@ -103,7 +103,7 @@ export default function ItemForm({
             className="button button-secondary"
             onClick={onCancelEdit}
           >
-            Cancel
+            Batal
           </button>
         )}
       </div>

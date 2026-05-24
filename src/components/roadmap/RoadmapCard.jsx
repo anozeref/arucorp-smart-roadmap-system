@@ -41,7 +41,7 @@ export default function RoadmapCard({
 
       <div className="roadmap-content">
         <div className="roadmap-badge">
-          🏆 Priority {item.priority}
+          🏆 Prioritas {item.priority}
         </div>
 
         <h2 className="roadmap-title">
@@ -54,7 +54,7 @@ export default function RoadmapCard({
 
         <div className="roadmap-stats">
           <div className="roadmap-stat">
-            <span>AVAILABLE</span>
+            <span>TERSEDIA</span>
 
             <strong>
               Rp{availableBudget.toLocaleString("id-ID")}
@@ -62,7 +62,7 @@ export default function RoadmapCard({
           </div>
 
           <div className="roadmap-stat">
-            <span>EST. PRICE</span>
+            <span>HARGA EST.</span>
 
             <strong>
               Rp{itemPrice.toLocaleString("id-ID")}
@@ -70,7 +70,7 @@ export default function RoadmapCard({
           </div>
 
           <div className="roadmap-stat">
-            <span>REMAINING SAVINGS</span>
+            <span>SISA TABUNGAN</span>
 
             <strong>
               Rp{remainingBalance.toLocaleString("id-ID")}
@@ -90,9 +90,9 @@ export default function RoadmapCard({
         </div>
 
         <p className="roadmap-footer">
-          {usedPercentage}% of budget used — Rp{remainingBalance.toLocaleString(
+          {usedPercentage}% anggaran terpakai — Rp{remainingBalance.toLocaleString(
             "id-ID"
-          )} remaining to save
+          )} tersisa untuk ditabung
         </p>
       </div>
     </div>

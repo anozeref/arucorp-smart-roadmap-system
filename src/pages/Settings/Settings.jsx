@@ -1,5 +1,6 @@
 import "./settings.css";
 
+import { Settings as SettingsIcon } from "lucide-react";
 import AllocationForm from "../../components/forms/AllocationForm";
 
 import useBudget from "../../hooks/useBudget";
@@ -16,12 +17,12 @@ export default function Settings() {
       <section className="settings-header">
         <div className="page-header-inner">
           <div className="page-header-icon">
-            <i className="fab fa-opencart"></i>
+            <SettingsIcon size={24} />
           </div>
           <div>
-            <h1>Settings</h1>
+            <h1>Pengaturan</h1>
             <p>
-              Configure procurement allocation and application preferences.
+              Atur alokasi pengadaan dan preferensi aplikasi secara mudah.
             </p>
           </div>
         </div>
@@ -29,7 +30,7 @@ export default function Settings() {
 
       <section className="settings-content">
         <div className="settings-card">
-          <h2>Monthly Allocation</h2>
+          <h2>Alokasi Bulanan</h2>
 
           <AllocationForm
             allocation={monthlyAllocation}
@@ -38,17 +39,17 @@ export default function Settings() {
         </div>
 
         <div className="settings-card danger-zone">
-          <h2>Reset Procurement Data</h2>
+          <h2>Reset Data Pengadaan</h2>
 
           <p>
-            Remove roadmap progress, purchased items, and balance history.
+            Hapus progres roadmap, item yang dibeli, dan riwayat saldo.
           </p>
 
           <button
             className="reset-button"
             onClick={resetBudget}
           >
-            Reset Data
+            Setel Ulang Data
           </button>
         </div>
       </section>

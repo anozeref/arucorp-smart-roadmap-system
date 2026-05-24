@@ -1,5 +1,6 @@
 import "./dashboard.css";
 
+import { Activity } from "lucide-react";
 import SummaryCard from "../../components/dashboard/SummaryCard";
 import BudgetOverview from "../../components/dashboard/BudgetOverview";
 import SavingsInfo from "../../components/dashboard/SavingsInfo";
@@ -23,13 +24,13 @@ export default function Dashboard() {
       <section className="dashboard-header">
         <div className="page-header-inner">
           <div className="page-header-icon">
-            <i className="fab fa-creative-commons"></i>
+            <Activity size={24} />
           </div>
           <div>
-            <h1>Procurement Dashboard</h1>
+            <h1>Dasbor Pengadaan</h1>
             <p>
-              Monitor procurement progress and balance allocation with a
-              compact dashboard view.
+              Pantau kemajuan pengadaan dan seimbangkan alokasi anggaran dengan
+              tampilan dasbor yang ringkas dan mudah dibaca.
             </p>
           </div>
         </div>
@@ -37,17 +38,17 @@ export default function Dashboard() {
 
       <section className="summary-grid">
         <SummaryCard
-          title="Monthly Allocation"
+          title="Alokasi Bulanan"
           value={`Rp ${monthlyAllocation.toLocaleString("id-ID")}`}
         />
 
         <SummaryCard
-          title="Total Items"
+          title="Total Item"
           value={items.length}
         />
 
         <SummaryCard
-          title="Purchased Items"
+          title="Item Dibeli"
           value={purchasedItems.length}
         />
       </section>

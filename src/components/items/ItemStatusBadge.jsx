@@ -9,7 +9,7 @@ export default function ItemStatusBadge({
           : "item-status pending"
       }
     >
-      {purchased ? "Purchased" : "Pending"}
+      {purchased ? "Terbeli" : "Tertunda"}
     </span>
   );
 }

@@ -1,3 +1,5 @@
+import { PiggyBank } from "lucide-react";
+
 export default function SavingsInfo({
   pendingItems,
 }) {
@@ -5,19 +7,19 @@ export default function SavingsInfo({
     <div className="savings-info-card">
       <div className="card-header">
         <div>
-          <h2>Savings Information</h2>
+          <h2>Informasi Tabungan</h2>
         </div>
 
-        <i className="fab fa-creative-commons card-header-icon" />
+        <PiggyBank className="card-header-icon" />
       </div>
 
       <div className="recommendation-content">
         <div className="savings-content">
           <div className="savings-item">
-            <span>Pending Items</span>
+            <span>Item Tertunda</span>
 
             <strong>
-              {pendingItems} Items
+              {pendingItems} Item
             </strong>
           </div>
         </div>

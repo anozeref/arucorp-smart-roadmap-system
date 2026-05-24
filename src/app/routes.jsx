@@ -5,6 +5,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Items from "../pages/Items/Items";
 import Roadmap from "../pages/Roadmap/Roadmap";
 import Settings from "../pages/Settings/Settings";
+import About from "../pages/About/About";
 
 import MainLayout from "../layouts/MainLayout";
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "settings",
         element: <Settings />,
+      },
+      {
+        path: "about",
+        element: <About />,
       },
     ],
   },
