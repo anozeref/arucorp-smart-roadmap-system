@@ -63,7 +63,7 @@ export default function ItemCard({
     }
 
     setDependencyError("");
-    await onUpdateItem?.(updatedItem);
+    await onUpdateItem?.(item.id, updatedItem);
     setShowDependencyEditor(false);
   }
 

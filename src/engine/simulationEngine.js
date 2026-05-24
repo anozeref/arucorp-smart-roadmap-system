@@ -1,5 +1,7 @@
 import { allocateMonthlyBudget } from "./allocationEngine";
+
 import { decideNextPurchase } from "./purchaseDecisionEngine";
+
 import { calculateRemainingBalance } from "./balanceEngine";
 
 export function runMonthlySimulation({
@@ -12,12 +14,12 @@ export function runMonthlySimulation({
 
   const roadmap = [];
 
-  // Preserve the purchased flag from source items so already purchased
-  // items are not included in the simulation roadmap.
-  const simulationItems = items.map((item) => ({
-    ...item,
-    purchased: !!item.purchased,
-  }));
+  const simulationItems = items.map(
+    (item) => ({
+      ...item,
+      purchased: !!item.purchased,
+    })
+  );
 
   while (
     simulationItems.some(
@@ -29,7 +31,20 @@ export function runMonthlySimulation({
       monthlyAllocation,
     });
 
-    let purchasedThisMonth = false;
+    const monthGroup = {
+      id: crypto.randomUUID(),
+
+      month: currentMonth,
+
+      purchases: [],
+
+      startingBalance: balance,
+
+      endingBalance: balance,
+
+      totalSpent: 0,
+    };
+
     let noFurtherPurchases = false;
 
     while (true) {
@@ -66,19 +81,36 @@ export function runMonthlySimulation({
         itemIndex
       ].purchased = true;
 
-      roadmap.push({
+      monthGroup.purchases.push({
         id: crypto.randomUUID(),
-        month: currentMonth,
+
+        itemId:
+          recommendation.id,
+
         itemName:
           recommendation.name,
+
         priority:
           recommendation.priority,
+
         price:
           recommendation.price,
+
         remainingBalance: balance,
       });
 
-      purchasedThisMonth = true;
+      monthGroup.totalSpent +=
+        recommendation.price;
+
+      monthGroup.endingBalance =
+        balance;
+    }
+
+    if (
+      monthGroup.purchases.length >
+      0
+    ) {
+      roadmap.push(monthGroup);
     }
 
     if (noFurtherPurchases) {

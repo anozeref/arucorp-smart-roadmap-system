@@ -1,34 +1,13 @@
 import "./roadmap.css";
 
 import { MapPin } from "lucide-react";
+
 import useRoadmap from "../../hooks/useRoadmap";
 
 import RoadmapCard from "../../components/roadmap/RoadmapCard";
 
 export default function Roadmap() {
   const { roadmap } = useRoadmap();
-
-  const groupedByMonth = roadmap.reduce(
-    (acc, entry) => {
-      const monthKey = String(entry.month);
-
-      if (!acc[monthKey]) {
-        acc[monthKey] = [];
-      }
-
-      acc[monthKey].push(entry);
-
-      return acc;
-    },
-    {}
-  );
-
-  const months = Object.keys(groupedByMonth)
-    .sort((a, b) => Number(a) - Number(b))
-    .map((monthKey) => ({
-      month: Number(monthKey),
-      purchases: groupedByMonth[monthKey],
-    }));
 
   return (
     <div className="roadmap-page">
@@ -37,11 +16,14 @@ export default function Roadmap() {
           <div className="page-header-icon">
             <MapPin size={24} />
           </div>
+
           <div>
             <h1>Roadmap</h1>
 
             <p>
-              Prioritaskan pembelian item berdasarkan anggaran dan kebutuhan.
+              Prioritaskan pembelian
+              item berdasarkan
+              anggaran dan kebutuhan.
             </p>
           </div>
         </div>
@@ -49,32 +31,57 @@ export default function Roadmap() {
 
       <div className="roadmap-summary">
         <section className="roadmap-main">
-          {/* Section header removed per localization request */}
-
           <div className="roadmap-list">
             {roadmap.length > 0 ? (
-              months.map((monthGroup) => (
-                <div
-                  key={monthGroup.month}
-                  className="roadmap-month-group"
-                >
-                  <div className="roadmap-month-heading">
-                    Bulan {monthGroup.month}
-                  </div>
+              roadmap.map(
+                (monthGroup) => (
+                  <div
+                    key={monthGroup.id}
+                    className="roadmap-month-group"
+                  >
+                    <div className="roadmap-month-header">
+                      <div className="roadmap-month-index">
+                        {
+                          monthGroup.month
+                        }
+                      </div>
 
-                  {monthGroup.purchases.map((item, idx) => (
-                    <RoadmapCard
-                      key={item.id}
-                      index={idx + 1}
-                      item={item}
-                    />
-                  ))}
-                </div>
-              ))
+                      <div className="roadmap-month-info">
+                        <h2>
+                          Cycle{" "}
+                          {
+                            monthGroup.month
+                          }
+                        </h2>
+
+                        <p>
+                          {
+                            monthGroup.purchases
+                              .length
+                          }{" "}
+                          item
+                          procurement
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="roadmap-month-items">
+                      {monthGroup.purchases.map(
+                        (item) => (
+                          <RoadmapCard
+                            key={item.id}
+                            item={item}
+                          />
+                        )
+                      )}
+                    </div>
+                  </div>
+                )
+              )
             ) : (
               <div className="roadmap-empty">
-                Belum ada item roadmap. Tambahkan entri di db.json
-                atau lewat formulir item.
+                Belum ada roadmap
+                procurement tersedia.
               </div>
             )}
           </div>

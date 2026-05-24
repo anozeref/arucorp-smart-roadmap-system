@@ -12,6 +12,7 @@ import {
 } from "../utils/calculations";
 
 import useItems from "../hooks/useItems";
+
 import useBudget from "../hooks/useBudget";
 
 export const RoadmapContext =
@@ -41,7 +42,22 @@ export function RoadmapProvider({
 
   const nextRecommendation =
     useMemo(() => {
-      return roadmap[0] || null;
+      if (roadmap.length === 0) {
+        return null;
+      }
+
+      const firstMonth =
+        roadmap[0];
+
+      if (
+        !firstMonth.purchases ||
+        firstMonth.purchases.length ===
+          0
+      ) {
+        return null;
+      }
+
+      return firstMonth.purchases[0];
     }, [roadmap]);
 
   const completionPercentage =
@@ -49,6 +65,7 @@ export function RoadmapProvider({
       return calculateCompletionPercentage(
         {
           totalItems: items.length,
+
           purchasedItems:
             purchasedItems.length,
         }
@@ -59,7 +76,9 @@ export function RoadmapProvider({
     <RoadmapContext.Provider
       value={{
         roadmap,
+
         nextRecommendation,
+
         completionPercentage,
       }}
     >

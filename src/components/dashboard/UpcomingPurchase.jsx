@@ -1,15 +1,32 @@
+// src/components/dashboard/UpcomingPurchase.jsx
+
 import { Clock } from "lucide-react";
 
 export default function UpcomingPurchase({
   roadmap,
 }) {
-  const upcomingItems = roadmap.slice(0, 5);
+  const flattenedPurchases =
+    roadmap.flatMap((monthGroup) =>
+      monthGroup.purchases.map(
+        (purchase) => ({
+          ...purchase,
+
+          month:
+            monthGroup.month,
+        })
+      )
+    );
+
+  const upcomingItems =
+    flattenedPurchases.slice(0, 5);
 
   return (
     <div className="upcoming-purchase-card">
       <div className="card-header">
         <div>
-          <h2>Pembelian Mendatang</h2>
+          <h2>
+            Pembelian Mendatang
+          </h2>
         </div>
 
         <Clock className="card-header-icon" />
@@ -17,31 +34,40 @@ export default function UpcomingPurchase({
 
       <div className="recommendation-content">
         <div className="upcoming-list">
-          {upcomingItems.length === 0 && (
+          {upcomingItems.length ===
+            0 && (
             <p>
-              Belum ada roadmap pengadaan mendatang.
+              Belum ada roadmap
+              pengadaan mendatang.
             </p>
           )}
 
-          {upcomingItems.map((item) => (
-            <div
-              key={item.id}
-              className="upcoming-item"
-            >
-              <div>
-                <h4>{item.itemName}</h4>
+          {upcomingItems.map(
+            (item) => (
+              <div
+                key={item.id}
+                className="upcoming-item"
+              >
+                <div>
+                  <h4>
+                    {item.itemName}
+                  </h4>
 
-                <p>Month {item.month}</p>
+                  <p>
+                    Cycle{" "}
+                    {item.month}
+                  </p>
+                </div>
+
+                <strong>
+                  Rp{" "}
+                  {item.price.toLocaleString(
+                    "id-ID"
+                  )}
+                </strong>
               </div>
-
-              <strong>
-                Rp{" "}
-                {item.price.toLocaleString(
-                  "id-ID"
-                )}
-              </strong>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </div>
     </div>

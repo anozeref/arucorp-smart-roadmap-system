@@ -18,7 +18,7 @@
       "name": "SSD SATA 128GB",
       "price": 265000,
       "priority": 1,
-      "purchased": true,
+      "purchased": false,
       "createdAt": 1779579722162
     },
     {
@@ -59,7 +59,10 @@
       "price": 850000,
       "priority": 1,
       "purchased": false,
-      "createdAt": 1779579825879
+      "createdAt": 1779579825879,
+      "dependencies": [
+        "4s8T9CH6l-k"
+      ]
     },
     {
       "id": "Ea6Kn2K3DAM",
@@ -67,7 +70,10 @@
       "price": 350000,
       "priority": 1,
       "purchased": false,
-      "createdAt": 1779579845612
+      "createdAt": 1779579845612,
+      "dependencies": [
+        "4s8T9CH6l-k"
+      ]
     },
     {
       "id": "B5q_6ZNov28",
@@ -75,7 +81,11 @@
       "price": 250000,
       "priority": 3,
       "purchased": false,
-      "createdAt": 1779579859256
+      "createdAt": 1779579859256,
+      "dependencies": [
+        "Ea6Kn2K3DAM",
+        "0_dg3q-Q_8U"
+      ]
     },
     {
       "id": "dFjOgiC76Wo",
@@ -83,7 +93,10 @@
       "price": 240000,
       "priority": 2,
       "purchased": false,
-      "createdAt": 1779579894964
+      "createdAt": 1779579894964,
+      "dependencies": [
+        "Ea6Kn2K3DAM"
+      ]
     },
     {
       "id": "W-DOX9qkUys",
@@ -91,7 +104,10 @@
       "price": 525000,
       "priority": 1,
       "purchased": false,
-      "createdAt": 1779579909701
+      "createdAt": 1779579909701,
+      "dependencies": [
+        "Ea6Kn2K3DAM"
+      ]
     },
     {
       "id": "hMABaLyORf8",
@@ -106,7 +122,7 @@
       "name": "Keyboard Furycube IP98",
       "price": 320000,
       "priority": 1,
-      "purchased": true,
+      "purchased": false,
       "createdAt": 1779579943730
     },
     {
@@ -115,7 +131,11 @@
       "price": 1600000,
       "priority": 1,
       "purchased": false,
-      "createdAt": 1779579959798
+      "createdAt": 1779579959798,
+      "dependencies": [
+        "Ea6Kn2K3DAM",
+        "4s8T9CH6l-k"
+      ]
     }
   ],
   "roadmap": [],
